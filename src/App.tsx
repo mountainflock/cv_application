@@ -1,20 +1,27 @@
 import './App.css'
-import GeneralInfo from "./components/general_info/generalInfo.component.jsx";
-import Education from "./components/education/education.component.jsx";
-import WorkExperience from "./components/work_experience/workExperience.component.jsx";
+import GeneralInfo from "./components/generalInfo.js";
+import Education from "./components/education.js";
+import WorkExperience from "./components/workExperience.js";
+
+// import { useState } from 'react';
+
 
 
 function App() {
 
+//   const [smth, setSmth] = useState(0);
+
+//   const handleSubmitClick = () => {
+// console.log("submit")
+
+  // }
+
   return (
-    <>
       <div className = "app">
         <GeneralInfo/>
         <Education/>
         <WorkExperience/>
       </div>
-
-    </>
   )
 }
 

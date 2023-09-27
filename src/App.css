@@ -1,10 +1,56 @@
-body {
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  width: 80%;
   display: flex;
   justify-content: center;
 }
 
+body {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+input {
+  height: 28px;
+  border: none;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+textarea {
+  border: none;
+  border-radius: 4px;
+}
+
 .section {
-  border: 1px solid black;
+  display: flex;
+  background-color: rgb(245, 235, 229);
   padding: 20px;
-  width: 50vh;
+  width: 100%;
+}
+
+.edit-button {
+  height: 20px;
+  font-size: 10px;
+  background-color: rgb(245, 235, 229);
+  margin: 0px;
+  padding: 2px 6px;
+  align-self: flex-end;
+}
+
+.submit-button {
+  height: 28px;
+  font-size: 11px;
 }
