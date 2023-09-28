@@ -1,19 +1,21 @@
-// import EditButton from "./editButton"
-// import SubmitButton from "./submitButton" 
-// import handleSubmitClick from '../App.tsx'
+import EditButton from "./editButton"
+import SubmitButton from "./submitButton" 
 
-const GeneralInfo = ({name, email, phone}) =>{
+const GeneralInfo = ({name, email, phone, editInfo}) =>{
 
 return (
     <div className="section">
         <div>
-        <h3>General Info <button className='edit-button'>EDIT</button> </h3>
-        <form 
-        >
-            <p><input placeholder="name" type="text" value={name}/></p>
-            <p><input placeholder="e-mail" type="email" value={email}/></p>
-            <p><input placeholder="phone number" type="tel" value={phone}/></p>
-            <button className='submit-button' type="submit">SUBMIT</button>
+        <h3>General Info <EditButton/>
+            <button className='edit-button'>EDIT</button> 
+            </h3>
+        <form onSubmit={editInfo} >
+            <p><input placeholder="name" type="text" defaultValue={name}/></p>
+            <p><input placeholder="e-mail" type="email" defaultValue={email}/></p>
+            <p><input placeholder="phone number" type="tel" defaultValue={phone}/></p>
+            <SubmitButton/>
+            {/* <button className='submit-button' type="submit">SUBMIT</button>
+             */}
         </form>
         </div>
     </div>
