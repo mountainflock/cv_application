@@ -1,20 +1,23 @@
-// import EditButton from "./editButton"
-// import SubmitButton from "./submitButton" 
+import EditButton from "./editButton"
+import SubmitButton from "./submitButton" 
 
 
-const WorkExperience = ({company, position, responsibilities, startDate, endDate}) => {
+const WorkExperience = ({company, position, responsibilities, startDate, endDate, editInfo}) => {
 
 return (
     <div className="section">
         <div>
-            <h3>Work Experience <button className='edit-button'>EDIT</button></h3>
-            <form >
-                <p><input placeholder="company" value={company}/></p>
-                <p><input placeholder="position" value={position}/></p>
-                <p><textarea placeholder="responsibilities" value={responsibilities}/></p>
-                <p>from <input type='date' value={startDate}/></p>
-                <p>to <input type='date' value={endDate}/></p>
-                <button className='submit-button' type="submit">SUBMIT</button>
+            <h3>Work Experience <EditButton/>
+                {/* <button className='edit-button'>EDIT</button> */}
+                </h3>
+            <form onSubmit={editInfo} >
+                <p><input placeholder="company" defaultValue={company}/></p>
+                <p><input placeholder="position" defaultValue={position}/></p>
+                <p><textarea placeholder="responsibilities" defaultValue={responsibilities}/></p>
+                <p>from <input type='date' defaultValue={startDate}/></p>
+                <p>to <input type='date' defaultValue={endDate}/></p>
+                <SubmitButton/>
+                {/* <button className='submit-button' type="submit">SUBMIT</button> */}
             </form>
             
 

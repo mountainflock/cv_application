@@ -1,18 +1,21 @@
-// import EditButton from "./editButton";
-// import SubmitButton from "./submitButton";
+import EditButton from "./editButton";
+import SubmitButton from "./submitButton";
 
 
-const Education = ({school, title, finished}) => {
+const Education = ({school, title, finished, editInfo}) => {
 
 return (
     <div className="section">
         <div>
-            <h3>Education <button className='edit-button'>EDIT</button></h3>
-            <form >
-                <p><input placeholder="school" value={school}/></p>
-                <p><input placeholder="title" value={title}/></p>
-                <p><input placeholder="finished" type="date" value={finished}/></p>
-                <button className='submit-button' type="submit">SUBMIT</button>
+            <h3>Education <EditButton/>
+                {/* <button className='edit-button'>EDIT</button> */}
+                </h3>
+            <form onSubmit={editInfo} >
+                <p><input placeholder="school" defaultValue={school}/></p>
+                <p><input placeholder="title" defaultValue={title}/></p>
+                <p><input placeholder="finished" type="date" defaultValue={finished}/></p>
+                {/* <button className='submit-button' type="submit">SUBMIT</button> */}
+                <SubmitButton/>
             </form>
 
         </div>

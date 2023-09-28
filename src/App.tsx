@@ -4,99 +4,68 @@ import Education from "./components/education.js";
 import WorkExperience from "./components/workExperience.js";
 import { useState } from 'react';
 
-// import { useState } from 'react';
-
-
 
 function App() {
-  const [person, setPerson] = useState({
-    name: "", email: "", phoneNumber: "", school: "", title: "", finishSchoolDate: "", company: "", position: "", responsibilities: "", startDate: "", endDate: ""
-  });
 
+  const [generalInfo, setGeneralInfo] = useState({name: "", email: "", phone: ""});
+  const [education, setEducation] = useState({school: "", title: "", finished: ""});
+  const [workExperience, setWorkExperience] = useState({company: "", position: "", responsibilities: "", startDate: "", endDate: ""});
+
+  function handleGeneralInfoChange(e) {
+    setGeneralInfo({
+      ...generalInfo,
+      name: e.target.value,
+      email: e.target.value,
+      phone: e.target.value,
+    });
+  }
+
+  function handleEducationChange(e) {
+    setEducation({
+      ...education,
+      school: e.target.value,
+      title: e.target.value,
+      finished: e.target.value
+  });
+}
+
+  function handleWorkExperienceChange(e) {
+    setWorkExperience({
+      ...workExperience,
+      company: e.target.value,
+      position: e.target.value,
+      responsibilities: e.target.value,
+      startDate: e.target.value,
+      endDate: e.target.value,
+    })
+  }
 
   return (
     <div className = "app">
       <GeneralInfo 
-      name="ferf"
-      email="vrr"
-      phone="vrev"/>
+      name=''
+      email=''
+      phone=''
+      editInfo={handleGeneralInfoChange}/>
+
       <Education
-      school="oeri"
-      title="freufh"
-      finished='1999-06-12'
+      school=''
+      title=''
+      finished=''
+      editInfo={handleEducationChange}
+
       />
       <WorkExperience
-      company='fer'
-      position='btoir'
-      responsibilities='ferf'
-      startDate="1999-06-12"
-      endDate="1999-06-12"
-
+      company=''
+      position=''
+      responsibilities=''
+      startDate=''
+      endDate=''
+      editInfo={handleWorkExperienceChange}
       />
     </div>
 )
+  }
   
-  // const [generalInfo, setGeneralInfo] = useState('');
-  // const [educacion, setEducation] = useState('');
-  // const [workExperience, setWorkExperience] = useState('');
-  
-
-  // function handleSchoolChange(e) {
-  //   setPerson({
-  //     ...person,
-  //     school: e.target.value
-  //   });
-  // }
-
-  // function handleTitleChange(e) {
-  //   setPerson({
-  //     ...person,
-  //     title: e.target.value
-  //   });
-  // }
-
-  // function handleFinishSchoolDateChange(e) {
-  //   setPerson({
-  //     ...person,
-  //     finishSchoolDate: e.target.value
-  //   });
-  // }
-
-  // function handleCompanyChange(e) {
-  //   setPerson({
-  //     ...person,
-  //     company: e.target.value
-  //   });
-  // }
-
-  // function handlePositionChange(e) {
-  //   setPerson({
-  //     ...person,
-  //     company: e.position.value
-  //   });
-  // }
-
-  // function handleResponsibiliesChange(e) {
-  //   setPerson({
-  //     ...person,
-  //     responsibilities: e.target.value
-  //   });
-  // }
-
-  // function handleStartDateChange(e) {
-  //   setPerson({
-  //     ...person,
-  //     startDate: e.target.value
-  //   });
-  // }
-
-  // function handleEndDateChange(e) {
-  //   setPerson({
-  //     ...person,
-  //     endDate: e.target.value
-  //   });
-  // }
-
-}
 
 export default App
