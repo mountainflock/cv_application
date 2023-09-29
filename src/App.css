@@ -25,22 +25,26 @@ body {
 
 input {
   height: 28px;
-  border: none;
+  border: 1px solid rgba(170, 170, 170, 0.9);
   border-radius: 4px;
   padding: 4px;
-  background-color: rgb(248, 238, 226);
+  /* background-color: rgb(248, 238, 226); */
 }
 
 textarea {
-  border: none;
+  border: 1px solid rgb(170, 170, 170);
   border-radius: 4px;
   height: 100px;
   width: 100%;
-  background-color: rgb(248, 238, 226);
+  /* background-color: rgb(248, 238, 226); */
+}
+
+button {
 }
 
 .section {
   display: flex;
+  flex-direction: column;
   /* background-color: rgb(245, 235, 229); */
   padding: 20px;
   width: 100%;
@@ -49,13 +53,15 @@ textarea {
 .edit-button {
   height: 20px;
   font-size: 10px;
-  /* background-color: rgb(245, 235, 229); */
+  background-color: rgba(153, 149, 149, 0.2);
   margin: 0px;
   padding: 2px 6px;
   align-self: flex-end;
 }
 
 .submit-button {
+  background-color: rgba(153, 149, 149, 0.2);
+
   height: 28px;
   font-size: 11px;
 }
