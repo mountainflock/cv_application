@@ -1,60 +1,109 @@
 import './App.css'
-import GeneralInfo from "./components/generalInfo.js";
+import GeneralInfo from "./components/general.js";
 import Education from "./components/education.js";
-import WorkExperience from "./components/workExperience.js";
+import WorkExperience from "./components/work.js";
 import { useState } from 'react';
 
 
 function App() {
 
-  const [generalInfo, setGeneralInfo] = useState({name: "", email: "", phone: ""});
-  const [education, setEducation] = useState({school: "", title: "", finished: ""});
-  const [workExperience, setWorkExperience] = useState({company: "", position: "", responsibilities: "", startDate: "", endDate: ""});
+  const [person, setPerson] = useState({ 
+    general: {
+      name: "", 
+      email: "", 
+      phone: ""}, 
+    educaction: {
+      school: "", 
+      title: "", 
+      finished: ""}, 
+    work: {
+      company: "", 
+      position: "", 
+      responsibilities: "", 
+      startDate: "", 
+      endDate: ""}});
 
-  function handleGeneralInfoChange(e) {
-    setGeneralInfo({
-      ...generalInfo,
-      name: e.target.value,
-      email: e.target.value,
-      phone: e.target.value,
-    });
+  const [isGeneralSubmit, setIsGeneralSubmit] = useState(false);
+  const [isEducationSibmit, setIsEducationSibmit] = useState(false);
+  const [isWorkSubmit, setIsWorkSubmit] = useState(false);
+
+  function handleGeneralSubmit(event) {
+    event.preventDefault();
+    setIsGeneralSubmit(true);
   }
 
-  function handleEducationChange(e) {
-    setEducation({
-      ...education,
-      school: e.target.value,
-      title: e.target.value,
-      finished: e.target.value
-  });
-}
-
-  function handleWorkExperienceChange(e) {
-    setWorkExperience({
-      ...workExperience,
-      company: e.target.value,
-      position: e.target.value,
-      responsibilities: e.target.value,
-      startDate: e.target.value,
-      endDate: e.target.value,
-    })
+  function saveName(event) {
+    event.preventDefault();
+    setPerson({
+      ...person,
+      general: {
+        ...person.general,
+        name: event.currentTarget.value}});
   }
+
+  function saveEmail(event) {
+    event.preventDefault();
+    setPerson({
+      ...person,
+      general: {
+        ...person.general,
+        email: event.currentTarget.value}});
+  }
+
+  function savePhone(event) {
+    event.preventDefault();
+    setPerson({
+      ...person,
+      general: {
+        ...person.general,
+        phone: event.currentTarget.value}});
+  }
+
+//   function handleEducationChange(e) {
+//     e.preventDefault();
+//     setEducation({
+//       ...education,
+//       school: e.target.value,
+//       title: e.target.value,
+//       finished: e.target.value
+//   });
+//   setIsEducationSubmit(true);
+// }
+
+//   function handleWorkExperienceChange(e) {
+//     e.preventDefault();
+//     setWork({
+//       ...work,
+//       company: e.target.value,
+//       position: e.target.value,
+//       responsibilities: e.target.value,
+//       startDate: e.target.value,
+//       endDate: e.target.value,
+//     });
+//     setIsWorkSubmit(true);
+//   }
 
   return (
     <div className = "app">
       <GeneralInfo 
-      name=''
-      email=''
-      phone=''
-      editInfo={handleGeneralInfoChange}/>
+      name={person.general.name}
+      email={person.general.email}
+      phone={person.general.phone}
+      editName={saveName}
+      editEmail={saveEmail}
+      editPhone={savePhone}
+      setIsGeneralSubmit={handleGeneralSubmit}
+      isGeneralSubmit={isGeneralSubmit}/>
 
-      <Education
+
+      {/* <Education
       school=''
       title=''
       finished=''
       editInfo={handleEducationChange}
-
+      isSubmit={isEducationSubmit}
       />
+
       <WorkExperience
       company=''
       position=''
@@ -62,7 +111,8 @@ function App() {
       startDate=''
       endDate=''
       editInfo={handleWorkExperienceChange}
-      />
+      isSubmit={isWorkSubmit}
+      /> */}
     </div>
 )
   }
