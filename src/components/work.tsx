@@ -1,7 +1,3 @@
-import EditButton from "./editButton"
-import SubmitButton from "./submitButton" 
-
-
 const WorkExperience = ({
     company, 
     position, 
@@ -14,13 +10,13 @@ const WorkExperience = ({
     editResponsibilities, 
     editStartDate, 
     editEndDate,
-setIsWorkSubmit}) => {
+    toggleIsWorkSubmit}) => {
 
 
     if (isWorkSubmit) 
     return (
     <div className='section'>
-            <h3>Work Experience <EditButton/></h3>
+            <h3>Work Experience <button className = "edit-button" onClick={toggleIsWorkSubmit}>EDIT</button></h3>
         <div>
             <p>{company}</p>
             <p>{position}</p>
@@ -34,14 +30,14 @@ setIsWorkSubmit}) => {
 return (
     <div className="section">
         <div>
-            <h3>Work Experience <EditButton/></h3>
-            <form onSubmit={setIsWorkSubmit} >
-                <p><input onChange={editCompany} placeholder="company" defaultValue={company}/></p>
-                <p><input onChange={editPosition} placeholder="position" defaultValue={position}/></p>
-                <p><textarea onChange={editResponsibilities} placeholder="responsibilities" defaultValue={responsibilities}/></p>
-                <p> <input onChange={editStartDate} type='date' defaultValue={startDate}/></p>
-                <p> <input onChange={editEndDate}type='date' defaultValue={endDate}/></p>
-                <SubmitButton/>
+            <h3>Work Experience </h3>
+            <form onSubmit={toggleIsWorkSubmit} >
+                <p><input onChange={editCompany} placeholder="company" value={company} required/></p>
+                <p><input onChange={editPosition} placeholder="position" defaultValue={position} required/></p>
+                <p><textarea onChange={editResponsibilities} placeholder="responsibilities" value={responsibilities} required/></p>
+                <p><label> from <input onChange={editStartDate} type='date' value={startDate} required/></label></p>
+                <label> to <input onChange={editEndDate}type='date' value={endDate} required/></label>
+                <button className="submit-button">SUBMIT</button>
             </form>
         </div>
         

@@ -1,13 +1,9 @@
-import EditButton from "./editButton";
-import SubmitButton from "./submitButton";
-
-
 const Education = ({
     school, 
-    title, 
+    title: titleOfStudy, 
     finished, 
     isEducationSubmit, 
-    setIsEducationSubmit, 
+    toggleIsEducationSubmit, 
     editSchool, 
     editTitle, 
     editFinished}) => {
@@ -15,10 +11,10 @@ const Education = ({
     if (isEducationSubmit) 
     return (
     <div className='section'>
-            <h3>Education <EditButton/></h3>
+            <h3>Education <button className="edit-button" onClick={toggleIsEducationSubmit}>EDIT</button></h3>
         <div>
             <p>{school}</p>
-            <p>{title}</p>
+            <p>{titleOfStudy}</p>
             <p>{finished}</p>
         </div>
     </div>
@@ -28,12 +24,12 @@ const Education = ({
 return (
     <div className="section">
         <div>
-            <h3>Education <EditButton/></h3>
-            <form onSubmit={setIsEducationSubmit} >
-                <p><input onChange={editSchool} placeholder="school" defaultValue={school}/></p>
-                <p><input onChange={editTitle} placeholder="title" defaultValue={title}/></p>
-                <p><input onChange={editFinished} placeholder="finished" type="date" defaultValue={finished}/></p>
-                <SubmitButton/>
+            <h3>Education </h3>
+            <form onSubmit={toggleIsEducationSubmit} >
+                <p><input onChange={editSchool} placeholder="school" defaultValue={school} required/></p>
+                <p><input onChange={editTitle} placeholder="title of study" defaultValue={titleOfStudy} required/></p>
+                <p><input onChange={editFinished} placeholder="finished" type="date" defaultValue={finished} required/></p>
+                <button className="submit-button">SUBMIT</button>
             </form>
         </div>
     </div>

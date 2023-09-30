@@ -14,7 +14,7 @@ function App() {
       phone: ""}, 
     educaction: {
       school: "", 
-      title: "", 
+      titleOfStudy: "", 
       finished: ""}, 
     work: {
       company: "", 
@@ -24,12 +24,13 @@ function App() {
       endDate: ""}});
 
   const [isGeneralSubmit, setIsGeneralSubmit] = useState(false);
-  const [isEducationSubmit, setIsEducationSibmit] = useState(false);
+  const [isEducationSubmit, setIsEducationSubmit] = useState(false);
   const [isWorkSubmit, setIsWorkSubmit] = useState(false);
 
-  function handleGeneralSubmit(event) {
+  function toggleIsGeneralSubmit(event) {
     event.preventDefault();
-    setIsGeneralSubmit(true);
+    if (!isGeneralSubmit) {setIsGeneralSubmit(true)}
+    else {setIsGeneralSubmit(false)}
   }
 
   function saveName(event) {
@@ -59,9 +60,10 @@ function App() {
         phone: event.currentTarget.value}});
   }
 
-  function handleEducationSubmit(event) {
+  function toggleIsEducationSubmit(event) {
     event.preventDefault();
-    setIsEducationSibmit(true);
+    if (!isEducationSubmit) {setIsEducationSubmit(true)}
+    else {setIsEducationSubmit(false)}
   }
 
   function saveSchool(event) {
@@ -79,7 +81,7 @@ function App() {
       ...person,
       educaction: {
         ...person.educaction,
-        title: event.currentTarget.value}});
+        titleOfStudy: event.currentTarget.value}});
   }
 
   function saveFinished(event) {
@@ -91,10 +93,12 @@ function App() {
         finished: event.currentTarget.value}});
   }
 
-  function handleWorkSubmit(event) {
+  function toggleIsWorkSubmit(event) {
     event.preventDefault();
-    setIsWorkSubmit(true);
+    if (!isWorkSubmit) {setIsWorkSubmit(true)}
+    else {setIsWorkSubmit(false)}
   }
+
 
   function saveCompany(event) {
     event.preventDefault();
@@ -150,18 +154,18 @@ function App() {
       editName={saveName}
       editEmail={saveEmail}
       editPhone={savePhone}
-      setIsGeneralSubmit={handleGeneralSubmit}
+      setIsGeneralSubmit={toggleIsGeneralSubmit}
       isGeneralSubmit={isGeneralSubmit}/>
 
 
       <Education
       school={person.educaction.school}
-      title={person.educaction.title}
+      title={person.educaction.titleOfStudy}
       finished={person.educaction.finished}
       editSchool={saveSchool}
       editTitle={saveTitle}
       editFinished={saveFinished}
-      setIsEducationSubmit={handleEducationSubmit}
+      toggleIsEducationSubmit={toggleIsEducationSubmit}
       isEducationSubmit={isEducationSubmit}
       />
 
@@ -176,12 +180,12 @@ function App() {
       editResponsibilities={saveResponsibilities}
       editStartDate={saveStartDate}
       editEndDate={saveEndDate}
-      setIsWorkSubmit={handleWorkSubmit}
+      toggleIsWorkSubmit={toggleIsWorkSubmit}
       isWorkSubmit={isWorkSubmit}
       />
     </div>
 )
-  }
+}
   
 
 export default App
