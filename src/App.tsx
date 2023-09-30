@@ -1,9 +1,9 @@
-import './App.css'
-import GeneralInfo from "./components/general.js";
-import Education from "./components/education.js";
-import WorkExperience from "./components/work.js";
+import './App.css';
 import { useState } from 'react';
 
+import General from "./components/general.js";
+import Education from "./components/education.js";
+import Work from "./components/work.js";
 
 function App() {
 
@@ -75,7 +75,7 @@ function App() {
         school: event.currentTarget.value}});
   }
 
-  function saveTitle(event) {
+  function saveTitleOfStudy(event) {
     event.preventDefault();
     setPerson({
       ...person,
@@ -147,29 +147,29 @@ function App() {
 
   return (
     <div className = "app">
-      <GeneralInfo 
+      <General 
       name={person.general.name}
       email={person.general.email}
       phone={person.general.phone}
       editName={saveName}
       editEmail={saveEmail}
       editPhone={savePhone}
-      setIsGeneralSubmit={toggleIsGeneralSubmit}
-      isGeneralSubmit={isGeneralSubmit}/>
+      isGeneralSubmit={isGeneralSubmit}
+      toggleIsGeneralSubmit={toggleIsGeneralSubmit}/>
 
 
       <Education
       school={person.educaction.school}
-      title={person.educaction.titleOfStudy}
+      titleOfStudy={person.educaction.titleOfStudy}
       finished={person.educaction.finished}
       editSchool={saveSchool}
-      editTitle={saveTitle}
+      editTitleOfStudy={saveTitleOfStudy}
       editFinished={saveFinished}
-      toggleIsEducationSubmit={toggleIsEducationSubmit}
       isEducationSubmit={isEducationSubmit}
+      toggleIsEducationSubmit={toggleIsEducationSubmit}
       />
 
-      <WorkExperience
+      <Work
       company={person.work.company}
       position={person.work.position}
       responsibilities={person.work.responsibilities}
@@ -180,12 +180,11 @@ function App() {
       editResponsibilities={saveResponsibilities}
       editStartDate={saveStartDate}
       editEndDate={saveEndDate}
-      toggleIsWorkSubmit={toggleIsWorkSubmit}
       isWorkSubmit={isWorkSubmit}
+      toggleIsWorkSubmit={toggleIsWorkSubmit}
       />
     </div>
 )
-}
-  
+}  
 
 export default App
