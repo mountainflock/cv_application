@@ -1,11 +1,12 @@
-import './App.css';
-import { useState } from 'react';
+import "./App.css";
+import { useState } from "react";
 
-import General from "./components/general.js";
-import Education from "./components/education.js";
-import Work from "./components/work.js";
+import SubmitButton from "./components/submitButton.js";
+import EditButton from "./components/editButton.js";
+import Input from "./components/input.js";
+import CvLine from "./components/cvLine.js";
 
-function App() {
+const App = () => {
 
   const [person, setPerson] = useState({ 
     general: {
@@ -23,17 +24,15 @@ function App() {
       startDate: "", 
       endDate: ""}});
 
-  const [isGeneralSubmit, setIsGeneralSubmit] = useState(false);
-  const [isEducationSubmit, setIsEducationSubmit] = useState(false);
-  const [isWorkSubmit, setIsWorkSubmit] = useState(false);
+  const [isSubmit, setIsSubmit] = useState(false);
 
-  function toggleIsGeneralSubmit(event) {
+  const toggleIsSubmit = (event) => {
     event.preventDefault();
-    if (!isGeneralSubmit) {setIsGeneralSubmit(true)}
-    else {setIsGeneralSubmit(false)}
+    if (!isSubmit) {setIsSubmit(true)}
+    else {setIsSubmit(false)}
   }
 
-  function saveName(event) {
+  const saveName = (event) => {
     event.preventDefault();
     setPerson({
       ...person,
@@ -42,7 +41,7 @@ function App() {
         name: event.currentTarget.value}});
   }
 
-  function saveEmail(event) {
+  const saveEmail=(event)=> {
     event.preventDefault();
     setPerson({
       ...person,
@@ -51,7 +50,7 @@ function App() {
         email: event.currentTarget.value}});
   }
 
-  function savePhone(event) {
+  const savePhone=(event)=> {
     event.preventDefault();
     setPerson({
       ...person,
@@ -60,13 +59,7 @@ function App() {
         phone: event.currentTarget.value}});
   }
 
-  function toggleIsEducationSubmit(event) {
-    event.preventDefault();
-    if (!isEducationSubmit) {setIsEducationSubmit(true)}
-    else {setIsEducationSubmit(false)}
-  }
-
-  function saveSchool(event) {
+  const saveSchool=(event)=> {
     event.preventDefault();
     setPerson({
       ...person,
@@ -75,7 +68,7 @@ function App() {
         school: event.currentTarget.value}});
   }
 
-  function saveTitleOfStudy(event) {
+  const saveTitleOfStudy=(event)=> {
     event.preventDefault();
     setPerson({
       ...person,
@@ -84,7 +77,7 @@ function App() {
         titleOfStudy: event.currentTarget.value}});
   }
 
-  function saveFinished(event) {
+  const saveFinished=(event)=> {
     event.preventDefault();
     setPerson({
       ...person,
@@ -93,14 +86,7 @@ function App() {
         finished: event.currentTarget.value}});
   }
 
-  function toggleIsWorkSubmit(event) {
-    event.preventDefault();
-    if (!isWorkSubmit) {setIsWorkSubmit(true)}
-    else {setIsWorkSubmit(false)}
-  }
-
-
-  function saveCompany(event) {
+  const saveCompany=(event)=> {
     event.preventDefault();
     setPerson({
       ...person,
@@ -109,7 +95,7 @@ function App() {
         company: event.currentTarget.value}});
   }
 
-  function savePosition(event) {
+  const savePosition=(event)=> {
     event.preventDefault();
     setPerson({
       ...person,
@@ -118,7 +104,7 @@ function App() {
         position: event.currentTarget.value}});
   }
 
-  function saveResponsibilities(event) {
+  const saveResponsibilities=(event)=> {
     event.preventDefault();
     setPerson({
       ...person,
@@ -127,7 +113,7 @@ function App() {
         responsibilities: event.currentTarget.value}});
   }
 
-  function saveStartDate(event) {
+  const saveStartDate=(event)=> {
     event.preventDefault();
     setPerson({
       ...person,
@@ -136,7 +122,7 @@ function App() {
         startDate: event.currentTarget.value}});
   }
 
-  function saveEndDate(event) {
+  const saveEndDate=(event)=> {
     event.preventDefault();
     setPerson({
       ...person,
@@ -145,46 +131,52 @@ function App() {
         endDate: event.currentTarget.value}});
   }
 
+  if (isSubmit) return (
+  <div>
+  <h3>General Info </h3>
+  <CvLine value={person.general.name}/>
+  <CvLine value={person.general.name}/>
+  <CvLine value={person.general.email}/>
+  <CvLine value={person.general.phone}/>
+
+  <h3>Education </h3>
+  <CvLine value={person.educaction.school}/>
+  <CvLine value={person.educaction.titleOfStudy}/>
+  <CvLine value=  {person.educaction.finished}/>
+  
+  <h3>Work Experience </h3>
+  <CvLine value={person.work.company}/>
+  <CvLine value={person.work.position}/>
+  <CvLine value={person.work.responsibilities}/>
+  from: <CvLine value= {person.work.startDate}/>
+  to: <CvLine value = {person.work.endDate}/>
+  <EditButton onClick={toggleIsSubmit}/>
+  </div>
+  )
+  
   return (
-    <div className = "app">
-      <General 
-      name={person.general.name}
-      email={person.general.email}
-      phone={person.general.phone}
-      editName={saveName}
-      editEmail={saveEmail}
-      editPhone={savePhone}
-      isGeneralSubmit={isGeneralSubmit}
-      toggleIsGeneralSubmit={toggleIsGeneralSubmit}/>
+<div>
+<form onSubmit={toggleIsSubmit}>
+  <h3>General Info </h3>
+    <Input onChange={saveName} placeholder="name" type="text" value={person.general.name}/>
+    <Input onChange={saveEmail} placeholder="e-mail" type="email" value={person.general.email}/>
+    <Input onChange={savePhone} placeholder="phone number" type="tel" value={person.general.phone}/>
 
+  <h3>Education </h3>
+    <Input onChange={saveSchool} placeholder="school" type="text" value={person.educaction.school}/>
+    <Input onChange={saveTitleOfStudy} placeholder="title of study" type="text" value={person.educaction.titleOfStudy}/>
+    <Input onChange={saveFinished} placeholder="finished" type="date" value={person.educaction.finished}/>
 
-      <Education
-      school={person.educaction.school}
-      titleOfStudy={person.educaction.titleOfStudy}
-      finished={person.educaction.finished}
-      editSchool={saveSchool}
-      editTitleOfStudy={saveTitleOfStudy}
-      editFinished={saveFinished}
-      isEducationSubmit={isEducationSubmit}
-      toggleIsEducationSubmit={toggleIsEducationSubmit}
-      />
-
-      <Work
-      company={person.work.company}
-      position={person.work.position}
-      responsibilities={person.work.responsibilities}
-      startDate={person.work.startDate}
-      endDate={person.work.endDate}
-      editCompany={saveCompany}
-      editPosition={savePosition}
-      editResponsibilities={saveResponsibilities}
-      editStartDate={saveStartDate}
-      editEndDate={saveEndDate}
-      isWorkSubmit={isWorkSubmit}
-      toggleIsWorkSubmit={toggleIsWorkSubmit}
-      />
-    </div>
-)
+  <h3>Work Experience </h3>
+    <Input onChange={saveCompany} placeholder="company" type="text" value={person.work.company}/>
+    <Input onChange={savePosition} placeholder="position" type="text" value={person.work.position}/>
+    <p><textarea onChange={saveResponsibilities} placeholder="responsibilities" value={person.work.responsibilities}/></p>
+    from: <Input onChange={saveStartDate} placeholder="" type="date" value={person.work.startDate}/>
+    to: <Input onChange={saveEndDate} placeholder="" type="date" value={person.work.endDate}/>
+    <SubmitButton/>
+</form>
+</div>
+  )
 }  
 
 export default App
