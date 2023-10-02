@@ -1,6 +1,18 @@
 input {
   height: 28px;
-  width: 30%;
   border: 1px solid rgba(170, 170, 170, 0.9);
+  border-radius: 4px;
+}
+
+.input-title {
+  margin: 0;
+  font-family: "Hind", sans-serif;
+  font-size: 14px;
+  color: rgb(100, 100, 100);
+}
+
+textarea {
+  height: 80px;
+  border: 1px solid rgb(170, 170, 170);
   border-radius: 4px;
 }
