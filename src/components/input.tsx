@@ -1,8 +1,12 @@
 import "../styles/input.css"
 
-const Input = ({onChange, type, placeholder, value}) => {
+const Input = ({title, onChange, type, value}) => {
     return (
-        <p><input onChange={onChange} type={type} placeholder={placeholder} value={value} /></p>
+        <div>
+            <p className="input-title">{title}:</p> 
+            <input onChange={onChange} type={type} value={value} required/>
+            <p></p>
+        </div>
     )
 }
 
