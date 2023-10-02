@@ -1,6 +1,6 @@
 .edit-button {
-  width: 30%;
-  background-color: rgba(153, 149, 149, 0.2);
+  width: 100%;
+  background-color: rgba(90, 88, 88, 0.5);
   height: 28px;
   font-size: 11px;
 }
