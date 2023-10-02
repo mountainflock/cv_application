@@ -1,6 +1,8 @@
 input {
+  width: 360px;
   height: 28px;
   border: 1px solid rgba(170, 170, 170, 0.9);
+  background-color: rgba(243, 237, 230, 0.5);
   border-radius: 4px;
 }
 
@@ -8,11 +10,13 @@ input {
   margin: 0;
   font-family: "Hind", sans-serif;
   font-size: 14px;
-  color: rgb(100, 100, 100);
+  color: rgb(60, 60, 60);
 }
 
 textarea {
+  width: 360px;
   height: 80px;
   border: 1px solid rgb(170, 170, 170);
+  background-color: rgba(243, 237, 230, 0.5);
   border-radius: 4px;
 }
