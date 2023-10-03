@@ -1,7 +1,5 @@
-import "../styles/submitButton.css"
+import "../styles/submitButton.css";
 
-const SubmitButton = () => {
-    return <button className="submit-button">SUBMIT</button>
-    }
-    
-    export default SubmitButton;
+const SubmitButton = () => <button className="submit-button">SUBMIT</button>;
+
+export default SubmitButton;

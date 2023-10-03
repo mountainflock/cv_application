@@ -1,11 +1,10 @@
-import "../styles/line.css"
+import "../styles/line.css";
 
-const Line = ({title, value}) => {
-    return (
-    <p className="cv-line" >
-       <span className="cv-line-title">{title}:</span> <span className="line">{value}</span>
-    </p>
-    )
-}
+const Line = ({ title, value }) => (
+  <p className="cv-line">
+    <span className="cv-line-title">{title}:</span>{" "}
+    <span className="line">{value}</span>
+  </p>
+);
 
-export default Line
+export default Line;
